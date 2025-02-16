@@ -142,4 +142,5 @@ class UploadFile extends Configuration
             'size' => filesize($temp_file),
         ];
     }
+    
 }
