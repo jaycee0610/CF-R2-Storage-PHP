@@ -74,6 +74,19 @@ echo json_encode($delete_file, JSON_PRETTY_PRINT);
 | Specific File `pdf`       | pdf                                   |
 | `null`                    | All                                   |
 
+### Base64Image to File
+
+```php
+use Rootscratch\Cloudstorage\UploadFile;
+
+$cloud_upload = new UploadFile();
+$base64_image = 'data:image/png;base64,.';
+$convert = $cloud_upload->base64Image($base64_image, 'filename.png');
+$upload = $cloud_upload->uploadFile($convert, null, null);
+
+echo json_encode($upload, JSON_PRETTY_PRINT);
+```
+
 ### Cloudflare R2 Returning 403?
 - Go to **Cloudflare Dashboard** → **R2 Storage** → **Permissions**
 - Enable **Public Read Access** for the bucket.
