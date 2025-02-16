@@ -1,0 +1,20 @@
+{
+    "name": "rootscratch/cloudstorage",
+    "description": "Cloudflare R2 Storage w/ aws-sdk-php",
+    "type": "library",
+    "require": {
+        "aws/aws-sdk-php": "^3.339"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Rootscratch\\Cloudstorage\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Christian Natividad",
+            "email": "jaycee@rootscratch.com"
+        }
+    ]
+}
