@@ -4,6 +4,9 @@
 # Cloudflare R2 Storage PHP
 
 This project allows users to upload/delete files to Cloudflare R2 storage using PHP and AWS SDK. It supports image, video, and document uploads with flexible validation.
+
+- https://packagist.org/packages/rootscratch/cloudstorage
+
 ## Features
 
 - Upload files to Cloudflare R2
@@ -22,7 +25,7 @@ composer require aws/aws-sdk-php
 ```
 Or Via Composer Package
 ```bash
-composer require Rootscratch/Cloudstorage
+composer require rootscratch/cloudstorage
 ```
 
 
