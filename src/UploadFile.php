@@ -102,4 +102,44 @@ class UploadFile extends Configuration
         }
     }
 
+
+
+    /**
+     * Base64Image Usage / Examples
+     * $convert = base64Image($base64_code, 'picmo.png');
+     * $upload = $class->uploadFile($convert, null, null);
+     */
+
+    public function base64Image($base64_string, $file_name = 'converted.png')
+    {
+        // Extract the base64 data from the string (remove the "data:image/png;base64," part)
+        if (strpos($base64_string, 'base64,') !== false) {
+            list(, $base64_string) = explode('base64,', $base64_string);
+        }
+
+        // Decode the Base64 string
+        $decoded_data = base64_decode($base64_string);
+
+        // Define a temporary file path
+        $temp_file = tempnam(sys_get_temp_dir(), 'upload_');
+
+        // Write the decoded image data to the temporary file
+        file_put_contents($temp_file, $decoded_data);
+
+        // Get MIME type and extension
+        $mime_type = mime_content_type($temp_file);
+        $extension = explode('/', $mime_type)[1] ?? 'png';
+
+        // Ensure the correct file extension
+        $file_name = pathinfo($file_name, PATHINFO_FILENAME) . '.' . $extension;
+
+        // Simulate the `$_FILES` array structure
+        return [
+            'name' => $file_name,
+            'type' => $mime_type,
+            'tmp_name' => $temp_file,
+            'error' => 0,
+            'size' => filesize($temp_file),
+        ];
+    }
 }
