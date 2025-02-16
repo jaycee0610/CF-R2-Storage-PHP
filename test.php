@@ -3,7 +3,7 @@
 require_once __DIR__ . '../vendor/autoload.php';
 
 
-if(!isset($_FILES['test'])){
+if (!isset($_FILES['test'])) {
     echo 'No Files Detected';
 }
 
@@ -23,6 +23,7 @@ $cs = new Configuration();
 
 // Upload File
 use Rootscratch\Cloudstorage\UploadFile;
+
 $cloud_upload = new UploadFile();
 $upload_file = $cloud_upload->uploadFile($_FILES['test'], null, null);
 
@@ -31,6 +32,7 @@ echo json_encode($upload_file, JSON_PRETTY_PRINT);
 
 //Delete File
 use Rootscratch\Cloudstorage\DeleteFile;
+
 $cloud_delete = new DeleteFile();
 $delete_file = $cloud_delete->deleteFile('filename.png', null);
 
