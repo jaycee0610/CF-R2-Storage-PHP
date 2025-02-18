@@ -41,9 +41,7 @@ Configuration::setEndpoint("https://your_end_point.r2.cloudflarestorage.com");
 Configuration::setBucketName("bucket_name");
 Configuration::setAccessKey("access_key");
 Configuration::setSecretKey("secrey_key");
-
-// Create an instance
-$cs = new Configuration();
+new Configuration();
 ```
 
 ### Upload a File
@@ -53,6 +51,14 @@ $cloud_upload = new UploadFile();
 $upload_file = $cloud_upload->uploadFile($_FILES['test'], null, null);
 
 echo json_encode($upload_file, JSON_PRETTY_PRINT);
+```
+### Sample Success Response
+```json
+{ "status": "success", "message": "File uploaded successfully.", "file_name": "d87879d5153a2b884211e168801511d7_test.png", "mime_type": "image\/png" }
+```
+### Sample Error Response
+```json
+{ "status": "error", "message": "Unsupported file type." }
 ```
 
 ### Delete a File
@@ -64,6 +70,11 @@ $delete_file = $cloud_delete->deleteFile('filename.png', null);
 
 echo json_encode($delete_file, JSON_PRETTY_PRINT);
 ```
+### Sample Response
+```json
+{ "status": "success", "message": "File deleted successfully.", "file_name": "filename.png" }
+```
+
 ### Valid File Categories
 
 | Category                  | Allowed Formats                       |
