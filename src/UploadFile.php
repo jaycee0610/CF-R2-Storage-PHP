@@ -12,7 +12,13 @@ class UploadFile extends Configuration
         parent::__construct();
     }
 
-
+    /**
+     * Rootscratch Cloudstorage Upload File
+     *
+     * @param array $file The uploaded file data from `$_FILES` (e.g., `$_FILES['test']`).
+     * @param string|null $category Optional category for the file. (example : 'image' / 'video' / 'docs' / 'archives')
+     * @param string $path The destination path for the uploaded file (default: 'uploads/').
+     */
     public function uploadFile($file, $category = null, $path = 'uploads/')
     {
         if (!isset($file) || $file['error'] !== UPLOAD_ERR_OK) {
@@ -110,9 +116,23 @@ class UploadFile extends Configuration
 
 
     /**
-     * Base64Image Usage / Examples
-     * $convert = base64Image($base64_code, 'picmo.png');
+     * 
+     * Sample Code (Convert and Upload)
+     * 
+     * $convert = $class->base64Image('data:image/png;base64,.');
+     * 
      * $upload = $class->uploadFile($convert, null, null);
+     * 
+     * Rootscratch Base64Image to File
+     * @param string example data:image/png;base64,.
+     * @param string|null The Default filename is converted.png
+     * @return array{
+     *      name: string,
+     *      type: string,
+     *      tmp_name: string,
+     *      error: int,
+     *      size: int|false
+     * }
      */
 
     public function base64Image($base64_string, $file_name = 'converted.png')
@@ -147,5 +167,4 @@ class UploadFile extends Configuration
             'size' => filesize($temp_file),
         ];
     }
-    
 }
