@@ -52,11 +52,11 @@ $upload_file = $cloud_upload->uploadFile($_FILES['test'], null, null);
 
 echo json_encode($upload_file, JSON_PRETTY_PRINT);
 ```
-### Sample Success Response
+### ✅ Success Response
 ```json
-{ "status": "success", "message": "File uploaded successfully.", "file_name": "d87879d5153a2b884211e168801511d7_test.png", "mime_type": "image\/png" }
+{ "status": "success", "message": "File uploaded successfully.", "file_name": "randfilename.png", "mime_type": "image\/png" }
 ```
-### Sample Error Response
+### ❌ Error Response
 ```json
 { "status": "error", "message": "Unsupported file type." }
 ```
@@ -70,7 +70,7 @@ $delete_file = $cloud_delete->deleteFile('filename.png', null);
 
 echo json_encode($delete_file, JSON_PRETTY_PRINT);
 ```
-### Sample Response
+### ✅ Response
 ```json
 { "status": "success", "message": "File deleted successfully.", "file_name": "filename.png" }
 ```
