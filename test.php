@@ -17,7 +17,7 @@ Configuration::setAccessKey("access_key");
 Configuration::setSecretKey("secrey_key");
 
 // Create an instance
-$cs = new Configuration();
+new Configuration();
 
 
 
