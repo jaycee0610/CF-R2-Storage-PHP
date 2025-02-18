@@ -21,9 +21,11 @@ class UploadFile extends Configuration
 
         // Define allowed file extensions and MIME types per category
         $allowedCategories = [
-            'image' => ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'],
-            'video' => ['mp4', 'mov', 'avi', 'mkv'],
-            'docs'  => ['pdf', 'docx', 'xlsx', 'txt'],
+            'image'    => ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'],
+            'video'    => ['mp4', 'mov', 'avi', 'mkv'],
+            'docs'     => ['pdf', 'docx', 'xlsx', 'txt'],
+            'archives' => ['zip', 'rar'],
+            'database' => ['sql']
         ];
 
         // MIME types for each file type
@@ -41,7 +43,10 @@ class UploadFile extends Configuration
             'pdf'  => 'application/pdf',
             'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
             'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-            'txt'  => 'text/plain'
+            'txt'  => 'text/plain',
+            'zip'  => 'application/zip',
+            'rar'  => 'application/vnd.rar',
+            'sql'  => 'application/sql'
         ];
 
         // Get file extension

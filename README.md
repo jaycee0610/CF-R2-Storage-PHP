@@ -82,6 +82,8 @@ echo json_encode($delete_file, JSON_PRETTY_PRINT);
 | `image`                   | jpg, jpeg, png, gif, webp, svg        |
 | `video`                   | mp4, mov, avi, mkv                    |
 | `docs`                    | pdf, docx, xlsx, txt                  |
+| `archives`                | zip, rar                              |
+| `database`                | sql                                   |
 | Specific File `pdf`       | pdf                                   |
 | `null`                    | All                                   |
 
