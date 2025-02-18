@@ -54,7 +54,12 @@ echo json_encode($upload_file, JSON_PRETTY_PRINT);
 ```
 ### ✅ Success Response
 ```json
-{ "status": "success", "message": "File uploaded successfully.", "file_name": "randfilename.png", "mime_type": "image\/png" }
+{
+   "status": "success",
+   "message": "File uploaded successfully.",
+   "file_name": "randfilename.png",
+   "mime_type": "image\/png"
+}
 ```
 ### ❌ Error Response
 ```json
