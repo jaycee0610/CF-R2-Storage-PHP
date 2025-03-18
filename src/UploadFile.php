@@ -1,5 +1,4 @@
 <?php
-
 namespace Rootscratch\Cloudstorage;
 
 use Aws\Exception\AwsException;
@@ -18,11 +17,23 @@ class UploadFile extends Configuration
      * @param array $file The uploaded file data from `$_FILES` (e.g., `$_FILES['test']`).
      * @param string|null $category Optional category for the file. (example : 'image' / 'video' / 'docs' / 'archives')
      * @param string $path The destination path for the uploaded file (default: 'uploads/').
+     * @param int|null $sizeLimit Maximum file size in bytes (default: 200MB if null).
      */
-    public function uploadFile($file, $category = null, $path = 'uploads/')
+    public function uploadFile($file, $category = null, $path = 'uploads/', $sizeLimit = null)
     {
         if (!isset($file) || $file['error'] !== UPLOAD_ERR_OK) {
             return ["status" => "error", "message" => "Invalid file upload."];
+        }
+        
+        // Set default size limit to 200MB if null
+        if ($sizeLimit === null) {
+            $sizeLimit = 200 * 1024 * 1024; // 200MB in bytes
+        }
+        
+        // Check file size
+        if ($file['size'] > $sizeLimit) {
+            $limitInMB = $sizeLimit / (1024 * 1024);
+            return ["status" => "error", "message" => "File size exceeds the limit of {$limitInMB}MB."];
         }
 
         // Define allowed file extensions and MIME types per category

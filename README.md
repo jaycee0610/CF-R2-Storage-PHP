@@ -14,6 +14,8 @@ This project allows users to upload/delete files to Cloudflare R2 storage using 
 - Delete files from Cloudflare R2
 - Uses AWS S3 SDK for managing R2 storage
 - Prevents invalid file uploads
+- **File size limit:** Default is 200MB (can be customized)
+
 ## Deployment
 
 To deploy this via cloning this URL
@@ -27,7 +29,6 @@ Or Via Composer Package
 ```bash
 composer require rootscratch/cloudstorage
 ```
-
 
 ## Usage/Examples
 Add your Cloudflare R2 credentials:
@@ -91,6 +92,17 @@ echo json_encode($delete_file, JSON_PRETTY_PRINT);
 | `database`                | sql                                   |
 | Specific File `pdf`       | pdf                                   |
 | `null`                    | All                                   |
+
+### File Size Limit
+
+- The default file size limit is **200MB**.
+- You can customize the size limit by passing the `$sizeLimit` parameter (in bytes) to the `uploadFile` method.
+
+Example:
+```php
+$cloud_upload = new UploadFile();
+$upload_file = $cloud_upload->uploadFile($_FILES['test'], null, null, 50); // 50MB limit
+```
 
 ### Base64Image to File
 
